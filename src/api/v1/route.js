@@ -2,9 +2,7 @@ const router = require('express').Router();
 const listController = require('./listController');
 const entryController = require('./entryController');
 
-
 router.get('/', function (request, response) {
-
     response.json({
         status: "API is working",
         message: "Welcome!",
@@ -29,7 +27,5 @@ router.route('/lists/:list_id/entrys/:entry_id/')
 router.route('/lists/:list_id/entrys')
     .post(entryController.post)
     .get(entryController.get);
-
-
 
 module.exports = router;

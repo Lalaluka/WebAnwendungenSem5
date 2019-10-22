@@ -1,0 +1,9 @@
+{
+  "name": "Server Development",
+  "databaselocation": "localhost",
+  "databasename":"gl_Database_dev",
+  "databaseUserName":"admin",
+  "databasePassword": "admin",
+  "databaseUseAuth": "false",
+  "port": 8080
+}

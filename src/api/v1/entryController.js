@@ -6,13 +6,13 @@ exports.patch = function (req, res) {
     res.json({
         message: "Not implemented yet"
     });
-}
+};
 
 exports.delete = function (req, res) {
     res.json({
         message: "Not implemented yet"
     });
-}
+};
 
 exports.post = function (req, res) {
     List.findById(req.params.list_id, function (error, lists) {
@@ -45,7 +45,7 @@ exports.post = function (req, res) {
             });
         }
     });
-}
+};
 
 exports.get = function (req, res) {
     List.findById(req.params.list_id, function (error, lists) {
@@ -58,4 +58,4 @@ exports.get = function (req, res) {
             });
         }
     });
-}
+};

@@ -11,7 +11,7 @@ exports.index = function (req, res) {
             });
         }
     })
-}
+};
 
 exports.new = function (req, res) {
     let list = new List();
@@ -21,20 +21,19 @@ exports.new = function (req, res) {
     list.creationDate = Date.now();
 
 
+    if(req.body.entities){
+        if(!Array.isArray(req.body.entities)){
+            req.body.entities = [req.body.entities];
+        }
 
-    if(!Array.isArray(req.body.entities)){
-        req.body.entities = [req.body.entities];
+        req.body.entities.forEach(function (entity) {
+            let ent = JSON.parse(entity);
+
+            ent.creationDate = Date.now();
+            list.entries.push(ent);
+        });
     }
 
-    req.body.entities.forEach(function (entity) {
-        let ent = JSON.parse(entity);
-
-        ent.creationDate = Date.now();
-        list.entries.push(ent);
-        console.log(ent)
-    });
-
-    console.log(list);
     //TODO: Rest implementieren
     list.save(function (error) {
         if (error) {
@@ -49,7 +48,7 @@ exports.new = function (req, res) {
     });
 
 
-}
+};
 
 exports.get = function (req, res) {
     List.findById(req.params.list_id, function (error, lists) {
@@ -62,7 +61,7 @@ exports.get = function (req, res) {
             });
         }
     });
-}
+};
 
 exports.update = function (req, res) {
     List.findByIdAndUpdate(req.params.list_id, req.body, {new: true}, function (error, lists) {
@@ -75,7 +74,7 @@ exports.update = function (req, res) {
             });
         }
     });
-}
+};
 
 exports.delete= function (req,res) {
     //TODO: 404 zurückgeben
@@ -88,4 +87,4 @@ exports.delete= function (req,res) {
             });
         }
     });
-}
+};
