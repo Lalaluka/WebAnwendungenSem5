@@ -1,13 +1,11 @@
 const List = require('../../schemas/listModel.js')
 
 exports.patch = function (req, res) {
-
+    //TODO: Diesen Scheiß schreiben
 }
 
 exports.delete = function (req, res) {
-
     //TODO: Diesen Scheiß schreiben
-
 }
 
 exports.post = function (req, res) {
