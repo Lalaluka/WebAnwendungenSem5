@@ -2,10 +2,16 @@ const List = require('../../schemas/listModel.js')
 
 exports.patch = function (req, res) {
     //TODO: Diesen Scheiß schreiben
+
+    res.json({
+        message: "Not implemented yet"
+    });
 }
 
 exports.delete = function (req, res) {
-    //TODO: Diesen Scheiß schreiben
+    res.json({
+        message: "Not implemented yet"
+    });
 }
 
 exports.post = function (req, res) {
