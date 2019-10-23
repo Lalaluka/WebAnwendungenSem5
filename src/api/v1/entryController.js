@@ -1,8 +1,8 @@
-const List = require('../../schemas/listModel.js')
+const List = require('../../schemas/listModel.js');
 
 exports.patch = function (req, res) {
     //TODO: Diesen Scheiß schreiben
-
+    res.status(500);
     res.json({
         message: "Not implemented yet"
     });
@@ -25,11 +25,8 @@ exports.post = function (req, res) {
                 }
 
                 req.body.entities.forEach(function (entity) {
-
-                    let ent = JSON.parse(entity);
-
-                    ent.creationDate = Date.now();
-                    lists.entries.push(ent);
+                    entity.creationDate = Date.now();
+                    lists.entries.push(entity);
                 });
 
                 lists.save(function (error) {

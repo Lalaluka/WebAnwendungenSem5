@@ -27,10 +27,8 @@ exports.new = function (req, res) {
         }
 
         req.body.entities.forEach(function (entity) {
-            let ent = JSON.parse(entity);
-
-            ent.creationDate = Date.now();
-            list.entries.push(ent);
+            entity.creationDate = Date.now();
+            list.entries.push(entity);
         });
     }
 
@@ -53,6 +51,7 @@ exports.new = function (req, res) {
 exports.get = function (req, res) {
     List.findById(req.params.list_id, function (error, lists) {
         if (error) {
+            res.status("404");
             res.json(error);
         } else {
             res.json({
@@ -80,6 +79,7 @@ exports.delete= function (req,res) {
     //TODO: 404 zurückgeben
     List.findByIdAndDelete(req.params.list_id, req.body, function (error) {
         if (error) {
+            res.status("404");
             res.json(error);
         } else {
             res.json({

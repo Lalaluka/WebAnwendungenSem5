@@ -1,0 +1,10 @@
+.done-true {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.gr-list{
+    background-color: white;
+    margin: 2%;
+    padding: 2%;
+}

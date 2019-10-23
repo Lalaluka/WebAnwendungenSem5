@@ -3,24 +3,31 @@
     <head>
         <meta charset="UTF-8">
         <title>List View</title>
-        <link rel="stylesheet" href="https://unpkg.com/mustard-ui@latest/dist/css/mustard-ui.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/list.css">
+        <link href='https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope' rel='stylesheet' type='text/css'>
         <link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
         <script src="/js/list.js"></script>
     </head>
     <body>
         <h1>Einkaufsliste View</h1>
-        <div ng-controller="ListController">
-            <h2>List-ID: {{list._id}} von {{list.owner}}</h2>
-            <span>of {{list.entries.length}} remaining</span>
+        <div ng-controller="ListController" class="gr-list">
+            <h2>Liste: <div class="times-font">{{list._id}}</div> von {{list.owner}}</h2>
+            <span>{{list.remaining()}}  of {{list.entries.length}} remaining</span>
             <ul class="unstyled">
                 <li ng-repeat="entries in list.entries">
                     <label class="checkbox">
+                        <input type="checkbox" ng-click="list.entryDone" ng-model="entries.done">
                         <span class="done-{{entries.done}}">{{entries.product}}</span>
                     </label>
                 </li>
             </ul>
+            <form ng-submit="list.addEntry()">
+                <input type="text" ng-model="list.productName"  size="30"
+                       placeholder="add new Entry here">
+                <input class="btn-primary" type="submit" value="add">
+            </form>
         </div>
     </body>
 </html>
