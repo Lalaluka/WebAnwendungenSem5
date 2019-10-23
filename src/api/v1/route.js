@@ -19,12 +19,12 @@ router.route('/lists/:list_id')
     .post(listController.new)
     .delete(listController.delete);
 
-router.route('/lists/:list_id/entrys/:entry_id/')
+router.route('/lists/:list_id/entries/:entry_id/')
     .patch(entryController.patch)
     .delete(entryController.delete);
 
 //alle entries & neues entry erstellen
-router.route('/lists/:list_id/entrys')
+router.route('/lists/:list_id/entries')
     .post(entryController.post)
     .get(entryController.get);
 

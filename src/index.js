@@ -23,7 +23,7 @@ if (useauth === "true"){
     });
 } else{
     console.log("Connecting without AUTH");
-    mongoose.connect('mongodb://'+ dblocation+'/'+dbname, function(err){
+    mongoose.connect('mongodb://'+ dblocation+'/'+dbname,  { useNewUrlParser: true, useUnifiedTopology: true }, function(err){
         if (err) { console.log(err) }
     });
 }
@@ -36,6 +36,13 @@ const app = express();
 app.use(bodyparser.urlencoded({
     extended : true
 }));
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://127.0.0.1:8080"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.use("/api/v1",apiRoutes);
 
 app.use('/',frontendRoutes);

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de" ng-app="listApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>List View</title>
+        <link rel="stylesheet" href="https://unpkg.com/mustard-ui@latest/dist/css/mustard-ui.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src="/js/list.js"></script>
+    </head>
+    <body>
+        <h1>Einkaufsliste View</h1>
+        <div ng-controller="ListController">
+            <h2>List-ID: {{list._id}} von {{list.owner}}</h2>
+            <span>of {{list.entries.length}} remaining</span>
+            <ul class="unstyled">
+                <li ng-repeat="entries in list.entries">
+                    <label class="checkbox">
+                        <span class="done-{{entries.done}}">{{entries.product}}</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

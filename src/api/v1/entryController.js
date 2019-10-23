@@ -19,30 +19,36 @@ exports.post = function (req, res) {
         if (error) {
             res.json(error);
         } else {
-
-            if (!Array.isArray(req.body.entities)) {
-                req.body.entities = [req.body.entities];
-            }
-
-            req.body.entities.forEach(function (entity) {
-
-                let ent = JSON.parse(entity);
-
-                ent.creationDate = Date.now();
-                lists.entries.push(ent);
-            });
-
-            lists.save(function (error) {
-                if (error) {
-                    res.json(error);
-                } else {
-                    res.json({
-
-                        message: "Added Entities",
-                        data: lists
-                    });
+            if(req.body.entities) {
+                if (!Array.isArray(req.body.entities)) {
+                    req.body.entities = [req.body.entities];
                 }
-            });
+
+                req.body.entities.forEach(function (entity) {
+
+                    let ent = JSON.parse(entity);
+
+                    ent.creationDate = Date.now();
+                    lists.entries.push(ent);
+                });
+
+                lists.save(function (error) {
+                    if (error) {
+                        res.json(error);
+                    } else {
+                        res.json({
+
+                            message: "Added Entities",
+                            data: lists
+                        });
+                    }
+                });
+            } else {
+                res.status('400');
+                res.json({
+                    message:"Error"
+                })
+            }
         }
     });
 };

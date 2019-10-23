@@ -6,6 +6,7 @@ function sendHtml(req,res){
         res.sendFile('./src/public/html/index.html' , { root: '.' })
     }
     res.sendFile('./src/public/html/'+sub+'.html' , { root: '.' });
+
 }
 
 function getindex(req,res){
