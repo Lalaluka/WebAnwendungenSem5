@@ -71,7 +71,7 @@ exports.update = function (req, res) {
             res.json(error);
         } else {
             res.json({
-                message: "send all requested List back",
+                message: "Send updated List back",
                 data: lists
             });
         }
