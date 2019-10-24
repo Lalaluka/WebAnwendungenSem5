@@ -3,6 +3,7 @@ const List = require('../../schemas/listModel.js')
 exports.index = function (req, res) {
     List.get(function (error, lists) {
         if (error) {
+            res.status(400);
             res.json(error);
         } else {
             res.json({
@@ -35,6 +36,7 @@ exports.new = function (req, res) {
     //TODO: Rest implementieren
     list.save(function (error) {
         if (error) {
+            res.status(500);
             res.json(error);
         } else {
             res.json({
@@ -65,6 +67,7 @@ exports.get = function (req, res) {
 exports.update = function (req, res) {
     List.findByIdAndUpdate(req.params.list_id, req.body, {new: true}, function (error, lists) {
         if (error) {
+            res.status(404);
             res.json(error);
         } else {
             res.json({
@@ -76,7 +79,6 @@ exports.update = function (req, res) {
 };
 
 exports.delete= function (req,res) {
-    //TODO: 404 zurückgeben
     List.findByIdAndDelete(req.params.list_id, req.body, function (error) {
         if (error) {
             res.status("404");
