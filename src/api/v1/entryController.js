@@ -2,7 +2,7 @@ const List = require('../../schemas/listModel.js');
 
 exports.patch = function (req, res) {
     //TODO: Diesen Scheiﬂ schreiben
-    res.status(500);
+    res.status(501);
     res.json({
         message: "Not implemented yet"
     });
