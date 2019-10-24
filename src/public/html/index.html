@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>ABC DEV</h1>
-</body>
+<html lang="de" ng-app="indexApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>T&C Einkaufsliste</title>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/index.css">
+        <link href='https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src="/js/index.js"></script>
+    </head>
+    <body>
+        <h1>T&C Einkaufsliste</h1>
+        <div ng-controller="SearchController" class="gr-list">
+            <h2>Search for a List</h2>
+            <form ng-submit="search.searchEntry()">
+                <label for="idSearch">List-ID: </label>
+                <input type="text" ng-model="search.idSearch" size="12" id="idSearch">
+                <label for="ownerSearch">E-Mail: </label>
+                <input type="text" ng-model="search.ownerSearch" id="ownerSearch">
+                <div id="search-error-message"></div>
+                <input class="btn-primary" type="submit" value="Search">
+            </form>
+        </div>
+        <div ng-controller="CreateListController" class="gr-list">
+            <h2>Create a new List</h2>
+            <form ng-submit="createList.create()">
+                <label for="owner">E-Mail: </label>
+                <input id="owner" type="email">
+                <label for="tags">Tags: </label>
+                <input id="tags" type="text">
+                <input class="btn-primary" type="submit" value="Create">
+            </form>
+        </div>
+    </body>
 </html>
