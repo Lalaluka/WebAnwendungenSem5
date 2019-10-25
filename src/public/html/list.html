@@ -9,9 +9,10 @@
         <link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
         <script src="/js/list.js"></script>
+        <script src="/js/main.js"></script>
     </head>
     <body>
-        <h1>T&C Einkaufsliste</h1>
+        <h1 onclick="home()">T&C Einkaufsliste</h1>
         <div ng-controller="ListController" class="gr-list">
             <h2>Liste: <div class="times-font">{{list._id}}</div> von {{list.owner}}</h2>
             <span>{{list.remaining()}}  of {{list.entries.length}} remaining</span>

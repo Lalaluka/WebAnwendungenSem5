@@ -19,6 +19,7 @@ exports.new = function (req, res) {
     list.entities = [];
 
     list.owner = req.body.owner;
+    list.tags = req.body.tags;
     list.creationDate = Date.now();
 
 

@@ -2,3 +2,6 @@
     width:42%;
     float: left;
 }
+#search-error-message{
+    color:red;
+}

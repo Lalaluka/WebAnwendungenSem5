@@ -9,27 +9,37 @@
         <link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
         <script src="/js/index.js"></script>
+        <script src="/js/main.js"></script>
     </head>
     <body>
-        <h1>T&C Einkaufsliste</h1>
+        <h1 onclick="home()">T&C Einkaufsliste</h1>
         <div ng-controller="SearchController" class="gr-list">
             <h2>Search for a List</h2>
             <form ng-submit="search.searchEntry()">
-                <label for="idSearch">List-ID: </label>
-                <input type="text" ng-model="search.idSearch" size="12" id="idSearch">
-                <label for="ownerSearch">E-Mail: </label>
-                <input type="text" ng-model="search.ownerSearch" id="ownerSearch">
-                <div id="search-error-message"></div>
+                <div class="stretch">
+                    <label for="idSearch">List-ID: </label>
+                    <input type="text" ng-model="search.idSearch" size="12" id="idSearch">
+                </div>
+                <div class="stretch">
+                    <label for="ownerSearch">E-Mail: </label>
+                    <input type="text" ng-model="search.ownerSearch" id="ownerSearch">
+                </div>
+                <span id="search-error-message">{{search.error}}</span>
                 <input class="btn-primary" type="submit" value="Search">
             </form>
         </div>
         <div ng-controller="CreateListController" class="gr-list">
             <h2>Create a new List</h2>
             <form ng-submit="createList.create()">
-                <label for="owner">E-Mail: </label>
-                <input id="owner" type="email">
-                <label for="tags">Tags: </label>
-                <input id="tags" type="text">
+                <div class="stretch">
+                    <label for="owner">E-Mail: </label>
+                    <input id="owner" type="email" ng-model="createList.email">
+                </div>
+                <div class="stretch">
+                    <label for="tags">Tags: </label>
+                    <input id="tags" type="text" ng-model="createList.tags">
+                </div>
+                <span id="create-error-message">{{createList.error}}</span>
                 <input class="btn-primary" type="submit" value="Create">
             </form>
         </div>
